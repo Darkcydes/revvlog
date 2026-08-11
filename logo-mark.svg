@@ -1,0 +1,20 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 334 296" role="img" aria-label="RevvLog">
+  <!--
+    Vectorised from the RevvLog mark by measuring the exported artwork rather
+    than eyeballing it. The R is three round-capped strokes of equal weight:
+    the bar and bowl are one continuous path (the bowl's mid-radius circle tops
+    out exactly on the bar's centre-line, so they meet tangentially), then the
+    leg. The counter is the hole the arc leaves, not a subtracted shape.
+
+    The R is currentColor on purpose — one file then serves white on the dark
+    theme, near-black on the light one, and white on the orange icon tile. The
+    dash keeps the brand orange in every case.
+  -->
+  <g fill="none" stroke="currentColor" stroke-width="53" stroke-linecap="round">
+    <path d="M30.5 25.5 H236.5 A71.1 71.1 0 1 1 182 141.6"/>
+    <path d="M200 142.5 305 269.5"/>
+  </g>
+  <!-- the dash's trailing edge is a steep slant into a rounded bottom corner,
+       not one straight cut — measured, the real edge bulges convex -->
+  <path class="logo-dash" d="M30.5 212 H141 L191 253.5 A20 20 0 0 1 171 273 H30.5 A30.5 30.5 0 0 1 30.5 212 Z" fill="#FF5A3C"/>
+</svg>

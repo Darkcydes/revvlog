@@ -1,0 +1,12 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" role="img" aria-label="RevvLog">
+  <!-- Browser-tab icon. Same geometry as logo-mark.svg, sized into a 512 tile:
+       the mark's 334x296 box scaled by 0.87 and centred. -->
+  <rect width="512" height="512" fill="#FAFAF8"/>
+  <g transform="translate(110.7 127.2) scale(0.87)">
+    <g fill="none" stroke="#111111" stroke-width="53" stroke-linecap="round">
+      <path d="M30.5 25.5 H236.5 A71.1 71.1 0 1 1 182 141.6"/>
+      <path d="M200 142.5 305 269.5"/>
+    </g>
+    <path d="M30.5 212 H141 L191 253.5 A20 20 0 0 1 171 273 H30.5 A30.5 30.5 0 0 1 30.5 212 Z" fill="#FF5A3C"/>
+  </g>
+</svg>

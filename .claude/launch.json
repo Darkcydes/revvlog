@@ -1,0 +1,11 @@
+{
+  "version": "0.0.1",
+  "configurations": [
+    {
+      "name": "revvlog",
+      "runtimeExecutable": "python",
+      "runtimeArgs": ["-m", "http.server", "8413"],
+      "port": 8413
+    }
+  ]
+}
