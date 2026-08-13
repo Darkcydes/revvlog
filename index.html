@@ -933,6 +933,11 @@ const BETA = {
   version:'beta-2026.08.13'
 };
 const K_BETA_USER='revv.betaUser', K_BETA_CFG='revv.betaConfig', K_EV_QUEUE='revv.evQueue';
+/* Dev/local testing must never write real events into the beta table — it did
+   once, and it read on the daily report as a phantom tester. The kill-switch
+   read is harmless (SELECT-only) so it still runs everywhere for real testing
+   of the gate; only the INSERT side is muted off the live origin. */
+const BETA_IS_LIVE = location.hostname === 'darkcydes.github.io';
 
 function betaUserId(){
   let id = DB.get(K_BETA_USER);
@@ -956,6 +961,7 @@ function postEvent(rec){
    ride through a tunnel doesn't lose the fact that a fill was logged. */
 function track(event, props){
   const rec = { user_id:betaUserId(), event, props:props||{}, app_version:BETA.version };
+  if(!BETA_IS_LIVE){ console.debug('[track:dev, not sent]', rec); return; }
   postEvent(rec).catch(()=>{
     const q = DB.get(K_EV_QUEUE, []); q.push(rec);
     if(q.length>300) q.splice(0, q.length-300);
