@@ -4,12 +4,12 @@
    fully offline. Bump CACHE when an asset in ASSETS changes — index.html no
    longer needs it, because a stale shell was the one thing you couldn't refresh
    your way out of. */
-const CACHE = 'revv-v2';
+const CACHE = 'revv-v3';
 const ASSETS = [
   './', './index.html', './manifest.json', './icon.svg',
   './apple-touch-icon.png', './icon-192-v3.png', './icon-512-v3.png',
   './logo-mark.svg',
-  './onboarding/mileage.png', './onboarding/range.png', './onboarding/garage.png'
+  './onboarding/mileage.svg', './onboarding/range.svg', './onboarding/garage.svg'
 ];
 
 self.addEventListener('install', (e) => {
