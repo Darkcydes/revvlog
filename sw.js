@@ -4,7 +4,7 @@
    fully offline. Bump CACHE when an asset in ASSETS changes — index.html no
    longer needs it, because a stale shell was the one thing you couldn't refresh
    your way out of. */
-const CACHE = 'revv-v1';
+const CACHE = 'revv-v2';
 const ASSETS = [
   './', './index.html', './manifest.json', './icon.svg',
   './apple-touch-icon.png', './icon-192-v3.png', './icon-512-v3.png',
@@ -30,6 +30,10 @@ self.addEventListener('activate', (e) => {
 
 self.addEventListener('fetch', (e) => {
   const req = e.request;
+  // The beta backend is never cached: usage events (POST) and the kill-switch
+  // (GET) must reach the network so a revoked or extended window is honoured
+  // rather than served stale from cache. Let the browser handle these directly.
+  if (req.url.indexOf('supabase.co') !== -1) return;
   if (req.method !== 'GET') return;
 
   // Page loads go to the network first and only fall back to the cached shell when

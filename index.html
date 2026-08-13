@@ -417,7 +417,7 @@ h1,h2,h3{font-weight:600;letter-spacing:-.015em}
 .field .num-in{font-variant-numeric:tabular-nums;font-weight:500}
 .field input:focus,.field select:focus,.field textarea:focus{outline:none;border-color:var(--brand)}
 .field textarea{resize:none;min-height:72px}
-.field select{appearance:none;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath d='M1 1l5 5 5-5' stroke='%23968CA0' stroke-width='1.6' fill='none' stroke-linecap='round'/%3E%3C/svg%3E");
+.field select{appearance:none;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath d='M1 1l5 5 5-5' stroke='%23968CA0' stroke-width='1.5' fill='none' stroke-linecap='round'/%3E%3C/svg%3E");
   background-repeat:no-repeat;background-position:right 16px center}
 .two{display:grid;grid-template-columns:1fr 1fr;gap:12px}
 .two>*{min-width:0}
@@ -745,6 +745,16 @@ body.locked #app,body.locked .dock{display:none}
 
 @media (prefers-reduced-motion: reduce){*{animation-duration:.001ms !important;transition-duration:.001ms !important}}
 :focus-visible{outline:2px solid var(--brand);outline-offset:2px}
+
+/* beta window ended — a calm full-screen stop that still hands back the data */
+#beta-end{position:fixed;inset:0;z-index:9999;background:var(--bg);display:grid;place-items:center;padding:32px;text-align:center}
+#beta-end .be-in{max-width:340px;display:flex;flex-direction:column;align-items:center}
+#beta-end .be-mark{width:60px;height:60px;color:var(--brand);margin-bottom:22px}
+#beta-end .be-mark svg{width:100%;height:100%}
+#beta-end h2{font-size:26px;font-weight:700;letter-spacing:-.02em;margin:0 0 12px}
+#beta-end p{font-size:15px;line-height:1.55;color:var(--dim);margin:0 0 28px}
+#beta-end .be-exp{height:52px;padding:0 26px;border-radius:14px;border:none;background:var(--brand);
+  color:var(--on-color);font-family:var(--font);font-size:15px;font-weight:600;cursor:pointer}
 </style>
 </head>
 <body class="locked">
@@ -784,10 +794,10 @@ body.locked #app,body.locked .dock{display:none}
         <button class="veh-pick" id="veh-pick" aria-haspopup="listbox" aria-expanded="false" aria-label="Switch vehicle">
           <span class="vp-dot" id="vp-dot"></span>
           <span class="vp-name" id="vp-name">Vehicle</span>
-          <svg class="vp-caret" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m6 9 6 6 6-6"/></svg>
+          <svg class="vp-caret" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="m6 9 6 6 6-6"/></svg>
         </button>
         <button class="tb-btn" data-go="settings" aria-label="Settings">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 1 1-2.83 2.83l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-4 0v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 1 1-2.83-2.83l.06-.06A1.65 1.65 0 0 0 4.6 15a1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1 0-4h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 1 1 2.83-2.83l.06.06A1.65 1.65 0 0 0 9 4.6a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 4 0v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 1 1 2.83 2.83l-.06.06A1.65 1.65 0 0 0 19.4 9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 0 4h-.09a1.65 1.65 0 0 0-1.51 1z"/></svg>
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 1 1-2.83 2.83l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-4 0v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 1 1-2.83-2.83l.06-.06A1.65 1.65 0 0 0 4.6 15a1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1 0-4h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 1 1 2.83-2.83l.06.06A1.65 1.65 0 0 0 9 4.6a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 4 0v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 1 1 2.83 2.83l-.06.06A1.65 1.65 0 0 0 19.4 9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 0 4h-.09a1.65 1.65 0 0 0-1.51 1z"/></svg>
         </button>
       </div>
     </div>
@@ -844,14 +854,14 @@ body.locked #app,body.locked .dock{display:none}
 <!-- DOCK: floating nav pill + detached action button -->
 <div class="dock">
   <nav class="nav" id="nav">
-    <button data-view="dashboard" class="on"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3.4 11.2 12 3.6l8.6 7.6"/><path d="M5.6 10v10h12.8V10"/></svg>Home</button>
-    <button data-view="analytics"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round"><path d="M5 20v-6M12 20V5M19 20v-9"/></svg>Stats</button>
-    <button data-view="trips"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="6" cy="6" r="2.6"/><circle cx="18" cy="18" r="2.6"/><path d="M8.6 6h5.4a3 3 0 0 1 0 6h-4a3 3 0 0 0 0 6h5.4"/></svg>Trips</button>
-    <button data-view="bike" id="nav-veh"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="5.5" cy="17" r="3.2"/><circle cx="18.5" cy="17" r="3.2"/><path d="M5.5 17l4-8h5l3 5.5M9 9h6M14.5 9l2.5 5"/></svg><span id="nav-veh-label">Bike</span></button>
-    <button data-view="history"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3 12a9 9 0 1 0 9-9 9 9 0 0 0-6.36 2.64L3 8"/><path d="M3 3v5h5"/><path d="M12 7.5V12l3 1.8"/></svg>Refuels</button>
+    <button data-view="dashboard" class="on"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M3.4 11.2 12 3.6l8.6 7.6"/><path d="M5.6 10v10h12.8V10"/></svg>Home</button>
+    <button data-view="analytics"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"><path d="M5 20v-6M12 20V5M19 20v-9"/></svg>Stats</button>
+    <button data-view="trips"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="6" cy="6" r="2.6"/><circle cx="18" cy="18" r="2.6"/><path d="M8.6 6h5.4a3 3 0 0 1 0 6h-4a3 3 0 0 0 0 6h5.4"/></svg>Trips</button>
+    <button data-view="bike" id="nav-veh"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="5.5" cy="17" r="3.2"/><circle cx="18.5" cy="17" r="3.2"/><path d="M5.5 17l4-8h5l3 5.5M9 9h6M14.5 9l2.5 5"/></svg><span id="nav-veh-label">Bike</span></button>
+    <button data-view="history"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M3 12a9 9 0 1 0 9-9 9 9 0 0 0-6.36 2.64L3 8"/><path d="M3 3v5h5"/><path d="M12 7.5V12l3 1.8"/></svg>Refuels</button>
   </nav>
   <button class="fab" id="fab" aria-label="Add refuel">
-    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><path d="M12 5v14M5 12h14"/></svg>
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"><path d="M12 5v14M5 12h14"/></svg>
   </button>
 </div>
 
@@ -911,6 +921,82 @@ let entries = [], trips = [], tripSinceFill = 0;
 let vehiclePhoto = null;   // data URL of the active vehicle's hero photo, or null
 let historyFilter = 'all', searchQuery = '';
 let currentView = 'dashboard';
+
+/* ---------- Beta instrumentation (remove for a public release) ----------
+   A time-boxed private beta: anonymous usage events go to a Supabase table, and
+   a remote row lets the window be revoked early or extended. The baked date is
+   the offline backstop, so the app still stops itself with no network. */
+const BETA = {
+  url:'https://fsfmnalvyitfzuzldlcd.supabase.co',
+  key:'sb_publishable_6U5nwP6Th-OZPfgNOtyskw_VhwdY9Jp',
+  expires:Date.parse('2026-10-13T00:00:00Z'),   // offline backstop (~2 months)
+  version:'beta-2026.08.13'
+};
+const K_BETA_USER='revv.betaUser', K_BETA_CFG='revv.betaConfig', K_EV_QUEUE='revv.evQueue';
+
+function betaUserId(){
+  let id = DB.get(K_BETA_USER);
+  if(!id){ id = (self.crypto&&crypto.randomUUID) ? crypto.randomUUID()
+                : 'u'+Date.now().toString(36)+Math.random().toString(16).slice(2);
+           DB.set(K_BETA_USER, id); }
+  return id;
+}
+function betaHeaders(json){
+  const h = { apikey:BETA.key, Authorization:'Bearer '+BETA.key };
+  if(json) h['Content-Type']='application/json';
+  return h;
+}
+function postEvent(rec){
+  return fetch(BETA.url+'/rest/v1/events', {
+    method:'POST', headers:Object.assign(betaHeaders(true), {Prefer:'return=minimal'}),
+    body:JSON.stringify(rec), keepalive:true
+  }).then(r=>{ if(!r.ok) throw new Error(r.status); });
+}
+/* Fire-and-forget; anything that can't send now is queued and flushed later so a
+   ride through a tunnel doesn't lose the fact that a fill was logged. */
+function track(event, props){
+  const rec = { user_id:betaUserId(), event, props:props||{}, app_version:BETA.version };
+  postEvent(rec).catch(()=>{
+    const q = DB.get(K_EV_QUEUE, []); q.push(rec);
+    if(q.length>300) q.splice(0, q.length-300);
+    DB.set(K_EV_QUEUE, q);
+  });
+}
+function flushEvents(){
+  const q = DB.get(K_EV_QUEUE, []); if(!q.length) return;
+  DB.set(K_EV_QUEUE, []);
+  q.forEach(rec=> postEvent(rec).catch(()=>{ const c=DB.get(K_EV_QUEUE,[]); c.push(rec); DB.set(K_EV_QUEUE,c); }));
+}
+window.addEventListener('online', flushEvents);
+
+function betaEnded(){
+  const cfg = DB.get(K_BETA_CFG, null), now = Date.now();
+  if(cfg) return cfg.active===false || now > Date.parse(cfg.expires_at);
+  return now > BETA.expires;
+}
+function refreshBetaConfig(){
+  return fetch(BETA.url+'/rest/v1/beta_config?id=eq.default&select=active,expires_at,message',
+      { headers:betaHeaders(false) })
+    .then(r=> r.ok ? r.json() : null)
+    .then(rows=>{ if(rows&&rows[0]) DB.set(K_BETA_CFG, rows[0]); return DB.get(K_BETA_CFG,null); })
+    .catch(()=> null);
+}
+function showBetaEnded(){
+  if(document.getElementById('beta-end')) return;
+  const cfg = DB.get(K_BETA_CFG, null);
+  const msg = (cfg&&cfg.message) || 'This beta has ended. Thanks so much for testing RevvLog. You can still export your data below.';
+  const b=$('#boot'); if(b) b.remove();
+  const lk=$('#lock'); if(lk) lk.hidden=true;
+  document.body.classList.add('locked');
+  const el=document.createElement('div');
+  el.id='beta-end';
+  el.innerHTML = `<div class="be-in"><div class="be-mark">${LOCK_MARK}</div>
+    <h2>Beta ended</h2><p>${esc(msg)}</p>
+    <button class="be-exp" id="be-export" type="button">Export my data</button></div>`;
+  document.body.appendChild(el);
+  $('#be-export').addEventListener('click', exportData);
+  track('beta_ended_view');
+}
 
 const RIDE_TYPES = ['Highway','City','Touring','Commute','Off-road','Mixed'];
 const SERVICE_WARN_KM   = 500;  // start nudging this far ahead of the distance service
@@ -1007,6 +1093,16 @@ const COLOURS = [
   {name:'Maroon',hex:'#6E2233'}, {name:'Brown',hex:'#6B4A2F'}
 ];
 
+/* Colour is now a free-text field, so map whatever the user typed onto a swatch
+   for the little vehicle dot — a whole word match ("Pearl white" -> white). No
+   match (or empty) leaves the hex blank and the dot falls back to neutral grey. */
+function colourHex(name){
+  const s=(name||'').toLowerCase();
+  if(!s) return '';
+  const hit = COLOURS.find(c=> new RegExp(`\\b${c.name.toLowerCase()}\\b`).test(s));
+  return hit ? hit.hex : '';
+}
+
 /* Specs start null, not defaulted. Setup collects identity only, so the range
    and service maths has nothing real to run on until the Vehicle screen is
    filled in — and inventing a tank size would be worse than admitting it is
@@ -1014,7 +1110,7 @@ const COLOURS = [
 function newVehicle(v){
   return Object.assign({
     id:uid(), type:'motorcycle', brand:'', model:'', name:'',
-    colour:{name:'Black',hex:'#1A1A1A'},
+    colour:{name:'',hex:''},
     tankSize:null, reserve:null, avgMileageOverride:null,
     /* the two service clocks — distance and calendar. Either may be left unset;
        tyre pressures are keyed by VEHICLE_TYPES.tyres and start absent. */
@@ -1061,6 +1157,7 @@ function addVehicle(v){
   vehicles.push(rec);
   DB.set(K.vehicles, vehicles);
   if(!activeId) loadVehicle(rec.id);
+  track('vehicle_added', { type: rec.type, total: vehicles.length });
   return rec;
 }
 
@@ -1073,6 +1170,7 @@ function removeVehicle(id){
   vehicles.splice(i,1);
   [K.vEntries(id), K.vTrips(id), K.vTrip(id), K.vPhoto(id)].forEach(k=>DB.del(k));
   DB.set(K.vehicles, vehicles);
+  track('vehicle_removed', { total: vehicles.length });
   if(id===activeId) loadVehicle(vehicles[0] ? vehicles[0].id : null);
 }
 
@@ -1518,7 +1616,7 @@ const ICON = {
   finger:'<path d="M2.8 13.4a9.2 9.2 0 0 1 18.4 0"/><path d="M5.2 19.9c.4-1.5.6-3.1.6-4.7a6.2 6.2 0 0 1 12.4 0c0 1.9-.2 3.7-.6 5.4"/><path d="M8.9 21.4c.4-1.6.6-3.4.6-5.2v-1a2.5 2.5 0 0 1 5 0v1c0 1.9-.2 3.6-.5 5.2"/>',
   back:'<path d="M20.4 5.6H9.2L3 12l6.2 6.4h11.2a1.6 1.6 0 0 0 1.6-1.6V7.2a1.6 1.6 0 0 0-1.6-1.6z"/><path d="M17 9.6 12.2 14.4M12.2 9.6 17 14.4"/>'
 };
-const ico=(name,sw=1.7)=>`<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="${sw}" stroke-linecap="round" stroke-linejoin="round">${ICON[name]}</svg>`;
+const ico=(name,sw=1.5)=>`<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="${sw}" stroke-linecap="round" stroke-linejoin="round">${ICON[name]}</svg>`;
 
 /* ---------- reusable blocks ---------- */
 /** The signature card: a headline number on the left, a small chart on the right. */
@@ -1577,7 +1675,7 @@ function setupCard(c){
   if(!(+bike.tankSize>0)) need.push('tank size');
   if(bike.odoBase==null)  need.push('odometer');
   return `<div class="setup-card">
-    <div class="sc-i">${ico('wrench',1.8)}</div>
+    <div class="sc-i">${ico('wrench')}</div>
     <div>
       <h4>Finish setting up ${esc(vehicleLabel(bike))}</h4>
       <p>Add its ${need.join(' and ')} and RevvLog can work out your range, service interval and cost per kilometre.</p>
@@ -1603,7 +1701,6 @@ function openVehicleSetup(){
     </div>
     <div class="field"><label>${esc(t.reserveLabel)} (L) <span style="color:var(--faint)">· optional</span></label>
       <input id="vs-res" class="num-in" type="number" inputmode="decimal" step="0.5" placeholder="${sug.reserve}" value="${bike.reserve??''}"/>
-      <div class="hint">${esc(t.reserveHint)}</div>
     </div>
     <div class="two">
       <div class="field"><label>Service every (km)</label><input id="vs-int" class="num-in" type="number" inputmode="decimal" step="500" placeholder="${sug.serviceInterval}" value="${bike.serviceInterval??''}"/></div>
@@ -1916,7 +2013,7 @@ function renderTrips(){
       sub:`${cur()}${fmtInt(tt.spend)} spent on the road`,
       chart: bars(pts,{title:'Distance by trip', color:'var(--c-trip)', w:MINI_W, h:104, bw:13})
     })}
-    ${secHead('All journeys', `<button class="go" id="trip-add">Add trip ${ico('chevron',2)}</button>`)}
+    ${secHead('All journeys', `<button class="go" id="trip-add">Add trip ${ico('chevron')}</button>`)}
     ${list.map(t=>{
       const tc=tripCalc(t,c);
       const when = t.endDate && t.endDate!==t.date ? `${dayMon(t.date)} – ${dayMonYr(t.endDate)}` : dayMonYr(t.date);
@@ -2017,7 +2114,7 @@ function renderBike(){
          the rest can, without it being shoved at everyone who doesn't. -->
     <button class="more-btn" id="more-toggle" type="button" aria-expanded="${moreOpen}">
       ${moreOpen ? 'Hide extra details' : `Add more about this ${esc(t.noun)}`}
-      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m6 9 6 6 6-6"/></svg>
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="m6 9 6 6 6-6"/></svg>
     </button>
     ${moreOpen ? `
       ${setRow('info','Registration number','', esc(bike.reg||'Not set'),'data-edit-bike="reg"')}
@@ -2040,7 +2137,7 @@ function renderBike(){
 }
 const setRow=(icon,title,sub,value,attrs='')=>`<div class="set" ${attrs}>
   <div class="sl"><div class="si">${ico(icon)}</div><div><div class="st">${title}</div>${sub?`<div class="ss">${sub}</div>`:''}</div></div>
-  <div class="sv">${value||''}${ico('chevron',2)}</div></div>`;
+  <div class="sv">${value||''}${ico('chevron')}</div></div>`;
 
 /* whether the optional-details block on the vehicle screen is open */
 let moreOpen = false;
@@ -2191,7 +2288,7 @@ function renderSettings(){
           <div><div class="st">${esc(vehicleLabel(v))}${v.id===activeId?' <span style="color:var(--brand);font-size:11px;font-weight:600">· ACTIVE</span>':''}</div>
           <div class="ss">${esc(vehicleSub(v))}${vehicleReady(v)?'':' · setup unfinished'}</div></div>
         </div>
-        <div class="sv">${ico('chevron',2)}</div>
+        <div class="sv">${ico('chevron')}</div>
       </div>`).join('')}
     ${setRow('plus','Add a vehicle','Motorcycle or car','','id="set-add-veh"')}
     ${secHead('Security')}
@@ -2205,7 +2302,7 @@ function renderSettings(){
     ${secHead('Danger zone')}
     <div class="set danger" id="set-reset">
       <div class="sl"><div class="si">${ico('trash')}</div><div><div class="st">Reset everything</div><div class="ss">Deletes all refuels, trips and settings</div></div></div>
-      <div class="sv">${ico('chevron',2)}</div></div>
+      <div class="sv">${ico('chevron')}</div></div>
     <div style="padding:24px 6px 0;text-align:center;color:var(--ghost);font-size:11.5px;line-height:1.8">
       RevvLog<br/>${DB.ok?'Stored on this device':'In-memory · preview only'}<br/>
       ${entries.length} refuels · ${trips.length} trips · ${fmtInt(c.odo)} km
@@ -2354,6 +2451,7 @@ function saveEntry(editId){
     if(isLatest) tripSinceFill = 0;
   }
   save(); hideSheet(); renderAll();
+  track('refuel_logged', { edit: !!editId, count: entries.length });
   toast(editId ? 'Refuel updated'
               : (skipsOdo ? 'Past refuel logged · odometer unchanged'
                           : (trip>0 ? `Refuel logged · odometer ${fmtInt(calc().odo)} km` : 'Refuel logged')),'✓');
@@ -2444,6 +2542,7 @@ function saveTrip(editId){
   if(prev){ trips[trips.findIndex(x=>x.id===editId)] = rec; }
   else trips.push(rec);
   save(); hideSheet(); renderAll();
+  track('trip_logged', { edit: !!editId, count: trips.length });
   toast(editId ? 'Trip updated'
               : (countOdo && stale ? 'Past trip logged · odometer unchanged'
                                    : `Trip logged${rec.odoCounted?` · +${fmtInt(rec.distanceKm)} km`:''}`),'✓');
@@ -2556,6 +2655,7 @@ function logService(){
     bike.serviceLog = [...(bike.serviceLog||[]), { odo:bike.lastServiceOdo, date:bike.lastServiceDate, notes:$('#s-notes').value.trim() }];
     serviceNudged = false;
     save(); hideSheet(); renderAll();
+    track('service_logged');
     const n=calc();
     toast(`Serviced at ${fmtInt(odo)} km · next at ${fmtInt(n.nextSvc)} km${n.nextSvcDate?` or ${dayMon(n.nextSvcDate)}`:''}`,'🔧');
   });
@@ -2671,7 +2771,7 @@ function manageVehicle(id){
   const s=$('#sheet');
   s.innerHTML=`<div class="grab"></div>
     <h2>${esc(vehicleLabel(v))}</h2>
-    <div class="sub">${esc(vehicleSub(v))} · ${esc((v.colour&&v.colour.name)||'')} · ${esc(vType(v).label)}</div>
+    <div class="sub">${[esc(vehicleSub(v)), esc((v.colour&&v.colour.name)||''), esc(vType(v).label)].filter(Boolean).join(' · ')}</div>
     <div class="field"><label>Name</label>
       <input id="mv-name" type="text" maxlength="28" value="${esc(v.name||'')}" placeholder="${esc([v.brand,v.model].filter(Boolean).join(' '))}"/></div>
     ${isActive ? '' : `<button class="cta" id="mv-switch" style="width:100%;margin-bottom:10px">Switch to this vehicle</button>`}
@@ -2738,6 +2838,7 @@ function exportData(){
   const url=URL.createObjectURL(blob); const a=document.createElement('a');
   a.href=url; a.download=`revvlog-${todayLocal()}.json`; a.click();
   setTimeout(()=>URL.revokeObjectURL(url),1000); toast('Backup downloaded','⤓');
+  track('data_export', { vehicles: vehicles.length });
 }
 function importData(){
   const inp=document.createElement('input'); inp.type='file'; inp.accept='application/json,.json';
@@ -2763,6 +2864,7 @@ function importData(){
       loadVehicle(d.activeVehicle || (vehicles[0] && vehicles[0].id) || null);
       DB.set(K.onboarded, vehicles.length>0);
       renderAll();
+      track('data_import', { vehicles: vehicles.length });
       toast(`Imported ${vehicles.length} vehicle${vehicles.length===1?'':'s'}`,'✓');
     }catch(err){ toast('Could not read that file','!'); } };
     r.readAsText(f);
@@ -2820,6 +2922,7 @@ function toast(msg, ic='✓'){
 }
 
 function showView(name){
+  if(name!==currentView) track('screen_view', { view: name });
   currentView = name;
   clearCharts();
   $$('.screen').forEach(s=> s.classList.toggle('active', s.id==='view-'+name));
@@ -3003,7 +3106,7 @@ function renderLock(){
 /** The fingerprint-first way in: no keypad at all until it's asked for. */
 function sensorHTML(){
   return `<div class="lk-head">
-      <button class="bio-hero tap pulse" data-act="bio" type="button" aria-label="Unlock with your fingerprint">${ico('finger',1.5)}</button>
+      <button class="bio-hero tap pulse" data-act="bio" type="button" aria-label="Unlock with your fingerprint">${ico('finger')}</button>
       <h2>Welcome back</h2>
       <p>Touch the sensor to open the garage.</p>
     </div>
@@ -3016,7 +3119,7 @@ function padHTML(){
     ${[1,2,3,4,5,6,7,8,9].map(n=>`<button class="key" data-d="${n}" type="button">${n}</button>`).join('')}
     <span class="key blank" aria-hidden="true"></span>
     <button class="key" data-d="0" type="button">0</button>
-    <button class="key ghost" data-act="del" type="button" aria-label="Delete last digit">${ico('back',1.6)}</button>
+    <button class="key ghost" data-act="del" type="button" aria-label="Delete last digit">${ico('back')}</button>
   </div>`;
 }
 
@@ -3032,7 +3135,7 @@ function footHTML(){
 
 function bioStepHTML(){
   return `<div class="lk-head">
-      <div class="bio-hero pulse">${ico('finger',1.6)}</div>
+      <div class="bio-hero pulse">${ico('finger')}</div>
       <h2>Unlock with your fingerprint?</h2>
       <p>Use the fingerprint this phone already knows instead of typing your PIN every time.</p>
     </div>
@@ -3287,7 +3390,7 @@ function vehicleThumb(v){
   if(p) return `<span class="vthumb"><img src="${p}" alt="" aria-hidden="true"></span>`;
   const hex = (v&&v.colour&&v.colour.hex)||'#63666A';
   return `<span class="vthumb glyph" style="color:${esc(hex)}">
-    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round">${VEH_ICON[(v&&v.type)]||VEH_ICON.motorcycle}</svg></span>`;
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">${VEH_ICON[(v&&v.type)]||VEH_ICON.motorcycle}</svg></span>`;
 }
 const vehicleSub = v => [v&&v.brand, v&&v.model].filter(Boolean).join(' ') || vType(v).label;
 
@@ -3310,7 +3413,7 @@ function vehMenuHTML(){
     </button>`).join('');
   return `${rows}${vehicles.length?'<div class="vm-sep"></div>':''}
     <button class="vm-item vm-add" data-veh-add="1" type="button">
-      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><path d="M12 5v14M5 12h14"/></svg>
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"><path d="M12 5v14M5 12h14"/></svg>
       Add a vehicle
     </button>`;
 }
@@ -3382,6 +3485,7 @@ function closeOb(){
 }
 function finishOnboarding(){
   DB.set(K.onboarded, true);
+  track('setup_done', { vehicles: vehicles.length });
   $('#ob').hidden = true;
   document.body.classList.remove('locked');
   if(!activeId && vehicles.length) loadVehicle(vehicles[0].id);
@@ -3395,9 +3499,6 @@ function renderOb(){
 
 function obFormHTML(){
   const d = obDraft, t = vType(d);
-  const swatches = COLOURS.map(c=>`
-    <button class="sw" type="button" aria-pressed="${d.colour.hex===c.hex}" data-hex="${c.hex}"
-      data-cname="${esc(c.name)}" style="--c:${c.hex}" aria-label="${esc(c.name)}" title="${esc(c.name)}"><i></i></button>`).join('');
   const brands = t.brands.map(b=>`<option value="${esc(b)}"></option>`).join('');
   const first = !obPost && vehicles.length === 0;
 
@@ -3410,11 +3511,11 @@ function obFormHTML(){
   <div class="ob-body">
     <div class="seg">
       <button type="button" aria-pressed="${d.type==='motorcycle'}" data-type="motorcycle">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><circle cx="5.5" cy="17" r="3.2"/><circle cx="18.5" cy="17" r="3.2"/><path d="M5.5 17l4-8h5l3 5.5M9 9h6M14.5 9l2.5 5"/></svg>
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="5.5" cy="17" r="3.2"/><circle cx="18.5" cy="17" r="3.2"/><path d="M5.5 17l4-8h5l3 5.5M9 9h6M14.5 9l2.5 5"/></svg>
         Motorcycle
       </button>
       <button type="button" aria-pressed="${d.type==='car'}" data-type="car">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M3 13.5 4.8 8.4A2.4 2.4 0 0 1 7.06 6.8h9.88a2.4 2.4 0 0 1 2.26 1.6L21 13.5"/><path d="M3 13.5h18v3.9H3z"/><circle cx="7" cy="17.4" r="1.6"/><circle cx="17" cy="17.4" r="1.6"/></svg>
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M3 13.5 4.8 8.4A2.4 2.4 0 0 1 7.06 6.8h9.88a2.4 2.4 0 0 1 2.26 1.6L21 13.5"/><path d="M3 13.5h18v3.9H3z"/><circle cx="7" cy="17.4" r="1.6"/><circle cx="17" cy="17.4" r="1.6"/></svg>
         Car
       </button>
     </div>
@@ -3428,11 +3529,11 @@ function obFormHTML(){
       <input id="ob-model" autocomplete="off" placeholder="${d.type==='car'?'Swift':'Classic 350'}" value="${esc(d.model)}">
     </div>
 
-    <div class="field"><label>Colour &middot; <span style="color:var(--faint)">${esc(d.colour.name)}</span></label>
-      <div class="sw-grid">${swatches}</div>
+    <div class="field"><label>Colour <span style="color:var(--faint)">&middot; optional</span></label>
+      <input id="ob-colour" autocomplete="off" maxlength="24" placeholder="${d.type==='car'?'Pearl white':'Racing red'}" value="${esc(d.colour&&d.colour.name||'')}">
     </div>
 
-    <div class="field"><label>Call it <span style="color:var(--faint)">&middot; optional</span></label>
+    <div class="field"><label>Name your vehicle <span style="color:var(--faint)">&middot; optional</span></label>
       <input id="ob-name" autocomplete="off" maxlength="28" placeholder="${d.type==='car'?'The runabout':'Weekend bike'}" value="${esc(d.name)}">
     </div>
   </div>
@@ -3449,10 +3550,10 @@ function obGarageHTML(){
       ${vehicleThumb(v)}
       <div class="gc-t">
         <div class="gc-n">${esc(vehicleLabel(v))}</div>
-        <div class="gc-s">${esc(vehicleSub(v))} &middot; ${esc((v.colour&&v.colour.name)||'')}</div>
+        <div class="gc-s">${[esc(vehicleSub(v)), esc((v.colour&&v.colour.name)||'')].filter(Boolean).join(' &middot; ')}</div>
       </div>
       <button class="gc-x" data-rm="${esc(v.id)}" type="button" aria-label="Remove ${esc(vehicleLabel(v))}">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round"><path d="M6 6l12 12M18 6 6 18"/></svg>
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"><path d="M6 6l12 12M18 6 6 18"/></svg>
       </button>
     </div>`).join('');
   const n = vehicles.length;
@@ -3496,17 +3597,15 @@ function wireOb(){
   const root = $('#ob-in');
   const readForm = ()=>{
     if(!obDraft) return;
-    const b=$('#ob-brand'), m=$('#ob-model'), n=$('#ob-name');
+    const b=$('#ob-brand'), m=$('#ob-model'), n=$('#ob-name'), c=$('#ob-colour');
     if(b) obDraft.brand = b.value.trim();
     if(m) obDraft.model = m.value.trim();
     if(n) obDraft.name  = n.value.trim();
+    if(c){ const name=c.value.trim(); obDraft.colour = { name, hex: colourHex(name) }; }
   };
 
   root.querySelectorAll('[data-type]').forEach(el=> el.addEventListener('click',()=>{
     readForm(); obDraft.type = el.dataset.type; renderOb();
-  }));
-  root.querySelectorAll('[data-hex]').forEach(el=> el.addEventListener('click',()=>{
-    readForm(); obDraft.colour = { name:el.dataset.cname, hex:el.dataset.hex }; renderOb();
   }));
   root.querySelectorAll('[data-rm]').forEach(el=> el.addEventListener('click',()=>{
     const v = findVehicle(el.dataset.rm); if(!v) return;
@@ -3549,6 +3648,20 @@ function wireOb(){
 
 (function boot(){
   const started = Date.now();
+
+  betaUserId();
+  if(betaEnded()){
+    // gate now from the cached/baked verdict; if the remote was extended since,
+    // re-run boot with the fresh row rather than staying stopped
+    showBetaEnded();
+    refreshBetaConfig().then(()=>{ if(!betaEnded()) location.reload(); });
+    return;
+  }
+  flushEvents();
+  track('app_open', { vehicles: vehicles.length, storage: DB.ok });
+  // a live pull can revoke access mid-beta; gate the moment it says so
+  refreshBetaConfig().then(()=>{ if(betaEnded()) showBetaEnded(); });
+
   if(activeId || vehicles.length) loadVehicle(activeId || vehicles[0].id);
   renderAll();
   updateFab();
